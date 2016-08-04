@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Installer>
+<Name>exampleinstaller</Name>
+<Version>0.0.1-0</Version>
+<Title>exampleinstaller Installer</Title>
+<Publisher>ESM-Institut</Publisher>
+<AllowSpaceInPath>true</AllowSpaceInPath>
+<StartMenuDir>exampleinstaller</StartMenuDir>
+<TargetDir>@RootDir@exampleinstaller</TargetDir>
+<RemoteRepositories>
+</RemoteRepositories>
+</Installer>
