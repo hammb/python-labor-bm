@@ -1,0 +1,16 @@
+build_checkout:
+  type: build
+  tags: 
+    - linux
+    - shell
+  script:
+    - echo success
+    
+test_checkout:
+  type: test
+  tags: 
+    - linux
+    - shell
+  script:
+    - echo success
+
