@@ -1,16 +1,25 @@
-build_checkout:
-  type: build
+.linux:build: &linux_build_job
+  stage: build
   tags: 
     - linux
     - shell
+  artifacts:
+    untracked: true
+    expire_in: 1 day
+
+.linux:test: &linux_test_job
+  stage: test
+  tags: 
+    - linux
+    - shell
+
+linux:build:checkout:
+  <<: *linux_build_job
   script:
     - echo success
     
-test_checkout:
-  type: test
-  tags: 
-    - linux
-    - shell
+linux:test:checkout:
+  <<: *linux_test_job
   script:
     - echo success
 
