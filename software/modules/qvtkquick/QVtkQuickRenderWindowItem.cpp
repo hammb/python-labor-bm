@@ -21,11 +21,14 @@
 #include <QtQuick>
 #include <QtDebug>
 
+#include "vtkRenderer.h"
 #include "vtkRenderWindow.h"
 #include "vtkRenderWindowInteractor.h"
 #include "vtkGenericRenderWindowInteractor.h"
 #include "vtkSmartPointer.h"
 #include "vtkCommand.h"
+
+Q_DECLARE_METATYPE(vtkRenderer*)
 
 class QVtkQuickRenderWindowItem::PrivateData 
 {
@@ -38,6 +41,8 @@ public:
 QVtkQuickRenderWindowItem::QVtkQuickRenderWindowItem(QQuickItem* parent) : QQuickItem(parent)
   ,d_data(new PrivateData())
 {
+    qRegisterMetaType<vtkRenderer*>("vtkRenderer*");
+
     setAcceptedMouseButtons(Qt::LeftButton | Qt::RightButton);
     setFlag(QQuickItem::ItemHasContents, true);
     d_data->pipeline = nullptr;
@@ -85,9 +90,13 @@ QSGNode* QVtkQuickRenderWindowItem::updatePaintNode(QSGNode* oldNode, UpdatePain
 
     renderWindowNode->setSize(boundingRect().size().toSize());
     renderWindowNode->setRect(boundingRect());
+    renderWindowNode->markDirty(QSGNode::DirtyGeometry);
 
     //update the pipeline - this should be safe here, maybe this could also be moved to a separate thread
     updatePipeline();
+
+    if(d_data->pipeline != nullptr)
+        QMetaObject::invokeMethod(d_data->pipeline, "updatePipeline");
 
     //add renderer to the render window
     if(!renderWindowNode->renderWindow()->HasRenderer(d_data->renderer->getVtkRenderer())) {
