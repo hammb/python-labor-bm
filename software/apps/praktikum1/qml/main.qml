@@ -34,7 +34,7 @@ ApplicationWindow {
         width: parent.width
         height: parent.height
         pipe: myDicomPipeline
-        interactor.enabled: true
+        interactor.enabled: false
 
         Rectangle {
             id: border
