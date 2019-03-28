@@ -1,0 +1,6 @@
+Zum Ausführen des Jupyter Notebooks führen Sie die Anaconda Prompt aus und navigieren in Ihr Netzlaufwerk Z: durch Eingabe von “Z:”.
+Anschließend starten Sie das Jupyter Notebook durch Eingabe von “jupyter notebook”.
+Es sollte ein neues Fenster in Ihrem Webbrowser geöffnet werden. Sollte dies nicht geschehen, öffnen Sie ein neues Fenster und gehen auf “localhost:8888”.
+Nun naivieren Sie im Webbrowser in das Verzeichnis, wo die Datei “python_intro.ipynb” liegt und klicken auf diese.
+Das Notebook sollte nun ausgeführt werden. Mit SHIFT+ENTER führen Sie die aktuelle Zelle aus. Sie können den Code beliebig anpassen und nochmals ausführen.
+Weitere Informationen können sie unter diesem Link finden: https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/
