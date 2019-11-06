@@ -1,5 +1,5 @@
 import vtk
-import os 
+import os
 
 dirpath = os.getcwd()+ os.sep + 'Marching Man'
 
@@ -15,12 +15,15 @@ iren.SetRenderWindow(renWin)
 
 DICOMimageReader = vtk.vtkDICOMImageReader()
 DICOMimageReader.SetDirectoryName(dirpath)
+#DICOMimageReader.SetFileName(dirpath)
 DICOMimageReader.Update()
+
 
 locator = vtk.vtkMergePoints()
 locator.SetDivisions(64, 64, 92)
 locator.SetNumberOfPointsPerBucket(2)
 locator.AutomaticOff()
+
 
 iso = vtk.vtkMarchingCubes()
 iso.SetInputConnection(DICOMimageReader.GetOutputPort())
