@@ -9,13 +9,13 @@ dirpath = os.getcwd()+ os.sep + 'Marching Man'
 
 colors = vtk.vtkNamedColors()
 
-ren = vtk.vtkRenderer()
+#ren = vtk.vtkRenderer()
 
-renWin = vtk.vtkRenderWindow()
-renWin.AddRenderer(ren)
+#renWin = vtk.vtkRenderWindow()
+#renWin.AddRenderer(ren)
 
-iren = vtk.vtkRenderWindowInteractor()
-iren.SetRenderWindow(renWin)
+#iren = vtk.vtkRenderWindowInteractor()
+#iren.SetRenderWindow(renWin)
 
 DICOMimageReader = vtk.vtkDICOMImageReader()
 DICOMimageReader.SetDirectoryName(dirpath)
@@ -92,7 +92,7 @@ pyplot.pcolormesh(x, y, numpy.flipud(numpy.rot90(ArrayDicom[:, :, 50])))
 #ren.GetActiveCamera().Dolly(1.5)
 #ren.ResetCameraClippingRange()
 
-renWin.SetSize(640, 480)
+#renWin.SetSize(640, 480)
 
-renWin.Render()
-iren.Start()
+#renWin.Render()
+#iren.Start()

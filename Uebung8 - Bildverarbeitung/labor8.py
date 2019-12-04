@@ -1,4 +1,9 @@
 import itk
+import numpy
+from matplotlib import pyplot, cm
+import os
+import vtk
+from vtk.util import numpy_support
 
 fixedImageFile = "fixed.png"
 movingImageFile = "moving.png"
@@ -80,3 +85,32 @@ writer.Update()
 resampler.SetTransform(identityTransform)
 writer.SetFileName(differenceImageBeforeFile)
 writer.Update()
+
+dirpath = os.getcwd()+ os.sep + 'before.png'
+
+colors = vtk.vtkNamedColors()
+
+PNGimageReader = vtk.vtkPNGReader()
+PNGimageReader.SetFileName(dirpath)
+PNGimageReader.Update()
+
+ren = vtk.vtkRenderer()
+
+renWin = vtk.vtkRenderWindow()
+renWin.AddRenderer(ren)
+
+iren = vtk.vtkRenderWindowInteractor()
+iren.SetRenderWindow(renWin)
+
+ism = vtk.vtkImageSliceMapper()
+ism.SetInputConnection(PNGimageReader.GetOutputPort())
+
+mapActor = vtk.vtkImageActor()
+mapActor.SetMapper(ism)
+
+ren.AddActor(mapActor)
+ren.SetBackground(colors.GetColor3d("SlateGray"))
+
+renWin.SetSize(600, 600)
+renWin.Render()
+iren.Start()
