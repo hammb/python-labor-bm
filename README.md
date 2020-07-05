@@ -6,3 +6,5 @@ Laborübungen zum Fach "Bildgestützte Medizin und Navigation"
 Beispielbild aus Laborübung 5: 3D-Modell aus CT-Bildern mittels VTK (marching cubes algorithm)
 
 ![Before](https://github.com/thejumboroar/python-labor-bm/blob/master/Uebung8%20-%20Bildverarbeitung/before.png)
+
+![After](https://github.com/thejumboroar/python-labor-bm/blob/master/Uebung8%20-%20Bildverarbeitung/after.png)
